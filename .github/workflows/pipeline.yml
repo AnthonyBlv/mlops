@@ -12,4 +12,4 @@ jobs:
     - run: docker tag mlops-ml_model anthonybelval/mlops-ml_model:latest
     - run: docker login -u anthonybelval -p ${{ secrets.DOCKER_PASSWORD }}
     - run: docker push anthonybelval/mlops-ml_model:latest
-    - run: sshpass -p Supermotdepasse!42 ssh -o "StrictHostKeyChecking=no" ubuntu@20.86.55.5 "docker pull anthonybelval/mlops-ml_model && docker run -d -p 5022:8080 anthonybelval/mlops-ml_model"
+    - run: sshpass -p Supermotdepasse!42 ssh -o "StrictHostKeyChecking=no" ubuntu@20.86.55.5 "docker rmi -f anthonybelval/mlops-ml_model || true && docker pull anthonybelval/mlops-ml_model && docker run -d -p 5022:8080 anthonybelval/mlops-ml_model"
