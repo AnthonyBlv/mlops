@@ -9,8 +9,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: docker compose up -d
-    - run: docker tag ml_model ${{ secrets.DOCKER_USERNAME }}/ml_model:latest
-    - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+    - run: docker tag mlops-ml_model anthonybelval/mlops-ml_model:latest
+    - run: docker login -u anthonybelval -p ${{ secrets.DOCKER_PASSWORD }}
     - run: docker push ml_model
     - run: ssh ubuntu@17.2.2.1
     - run: docker pull ml_model
