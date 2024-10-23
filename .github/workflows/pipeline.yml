@@ -8,7 +8,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - run: docker compose up -d ml_model
+    - run: docker compose up -d
     - run: docker tag ml_model ${{ secrets.DOCKER_USERNAME }}/ml_model:latest
     - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
     - run: docker push ml_model
